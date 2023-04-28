@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+//add the namespace for appdbcontext.cs file
+using eTickets.Data;
+
 namespace eTickets
 {
     public class Startup
@@ -23,6 +26,7 @@ namespace eTickets
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>();
             services.AddControllersWithViews();
         }
 
