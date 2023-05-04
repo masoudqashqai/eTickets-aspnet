@@ -1,11 +1,12 @@
 ﻿using eTickets.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace eTickets.Data.Services
 {
     public interface IActorService
     {
-        IEnumerable<Actor> GetALL();
+        Task<IEnumerable<Actor>> GetALL();
 
         //a method to return a single Actor
         Actor GetById(int id);

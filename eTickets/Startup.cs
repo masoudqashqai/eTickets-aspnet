@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 //add the namespace for appdbcontext.cs file
 using eTickets.Data;
 using Microsoft.EntityFrameworkCore;
+using eTickets.Data.Services;
 
 namespace eTickets
 {
@@ -30,7 +31,14 @@ namespace eTickets
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
+
+            //add actors service <interface,implementation>
+            services.AddScoped<IActorService, ActorsService>();
+
+
             services.AddControllersWithViews();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
