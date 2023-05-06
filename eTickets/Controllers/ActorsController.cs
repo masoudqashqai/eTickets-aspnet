@@ -23,7 +23,7 @@ namespace eTickets.Controllers
             return View(data);
         }
 
-
+        //
         //Get method   Url:.../Actors/Create
         public IActionResult Create()
         {
