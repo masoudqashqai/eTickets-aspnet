@@ -43,5 +43,14 @@ namespace eTickets.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        //Get Url:.../Actors/Details/id
+        public async Task<IActionResult> Details(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+
+            if (actorDetails == null) return View("Empty");
+            return View(actorDetails);
+        }
     }
 }

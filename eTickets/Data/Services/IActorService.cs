@@ -9,7 +9,7 @@ namespace eTickets.Data.Services
         Task<IEnumerable<Actor>> GetALL();
 
         //a method to return a single Actor
-        Actor GetById(int id);
+        Task<Actor> GetByIdAsync(int id);
 
         //a method to add data to db
         void Add(Actor actor);
