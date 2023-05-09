@@ -12,10 +12,10 @@ namespace eTickets.Data.Services
         Task<Actor> GetByIdAsync(int id);
 
         //a method to add data to db
-        void Add(Actor actor);
+        Task AddAsync(Actor actor);
 
         //update db
-        Actor Update(int id, Actor newActor);
+        Task<Actor> UpdateAsync(int id, Actor newActor);
 
         //delete a record from db
         void Delete(int id);
