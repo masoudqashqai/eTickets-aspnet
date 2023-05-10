@@ -18,6 +18,6 @@ namespace eTickets.Data.Services
         Task<Actor> UpdateAsync(int id, Actor newActor);
 
         //delete a record from db
-        void Delete(int id);
+        Task Delete(int id);
     }
 }
