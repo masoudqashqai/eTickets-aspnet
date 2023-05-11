@@ -49,7 +49,7 @@ namespace eTickets.Controllers
         {
             var actorDetails = await _service.GetByIdAsync(id);
 
-            if (actorDetails == null) return View("Not Found");
+            if (actorDetails == null) return View("NotFound");
             return View(actorDetails);
         }
 
@@ -58,7 +58,7 @@ namespace eTickets.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             var actorDetails = await _service.GetByIdAsync(id);
-            if (actorDetails == null) return View("Not Found");
+            if (actorDetails == null) return View("NotFound");
             return View(actorDetails);
         }
 
@@ -79,7 +79,7 @@ namespace eTickets.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var actorDetails = await _service.GetByIdAsync(id);
-            if (actorDetails == null) return View("Not Found");
+            if (actorDetails == null) return View("NotFound");
             return View(actorDetails);
         }
 
@@ -89,7 +89,7 @@ namespace eTickets.Controllers
         {
 
             var actorDetails = await _service.GetByIdAsync(id);
-            if (actorDetails == null) return View("Not Found");
+            if (actorDetails == null) return View("NotFound");
 
             await _service.Delete(id);
 
