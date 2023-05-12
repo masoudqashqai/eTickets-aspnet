@@ -17,7 +17,7 @@ namespace eTickets.Data.Base
         Task AddAsync(T entity);
 
         //update db
-        Task<T> UpdateAsync(int id, T entity);
+        Task UpdateAsync(int id, T entity);
 
         //delete a record from db
         Task Delete(int id);
