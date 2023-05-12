@@ -6,7 +6,9 @@ namespace eTickets.Data.Base
 {
     public interface IEntityBaseRepository<T> where T:class, IEntityBase, new()
     {
-        Task<IEnumerable<T>> GetALL();
+       
+
+        Task<IEnumerable<T>> GetAllAsync();
 
         //a method to return a single T
         Task<T> GetByIdAsync(int id);
