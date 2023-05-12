@@ -16,10 +16,8 @@ namespace eTickets.Data.Base
             _context = context;
         }
 
-        public Task AddAsync(T entity)
-        {
-            throw new System.NotImplementedException();
-        }
+        public async Task AddAsync(T entity) => await _context.Set<T>().AddAsync(entity);
+       
 
         public Task Delete(int id)
         {
@@ -28,8 +26,7 @@ namespace eTickets.Data.Base
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            var result = await _context.Set<T>().ToListAsync();
-            return result;
+            return await _context.Set<T>().ToListAsync();
         }
 
         public async Task<T> GetByIdAsync(int id)
