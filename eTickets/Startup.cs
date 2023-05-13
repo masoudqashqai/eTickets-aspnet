@@ -34,6 +34,7 @@ namespace eTickets
 
             //add actors service <interface,implementation>
             services.AddScoped<IActorService, ActorsService>();
+            services.AddScoped<IProducersService, ProducersService>();
 
 
             services.AddControllersWithViews();
