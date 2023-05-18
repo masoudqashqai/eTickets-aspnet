@@ -1,5 +1,6 @@
 ﻿using eTickets.Data;
 using eTickets.Data.Services;
+using eTickets.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -13,10 +14,28 @@ namespace eTickets.Controllers
         {
             _service = service;
         }
+
         public async Task<IActionResult> Index()
         {
             var AllCinemas = await _service.GetAllAsync();
             return View(AllCinemas);
+        }
+
+        //GET /cinemas/create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("Logo,Name,Description")] Cinema cinema)
+        {
+            //show model state errors
+            if (!ModelState.IsValid) return View(cinema);
+
+            await _service.AddAsync(cinema);
+            return RedirectToAction(nameof(Index));
+
         }
     }
 }
