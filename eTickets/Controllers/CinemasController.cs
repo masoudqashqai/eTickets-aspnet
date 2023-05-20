@@ -45,5 +45,24 @@ namespace eTickets.Controllers
             if (CinemaDetail == null) return View("NotFound");
             return View(CinemaDetail);
         }
+
+        //GET: /cinemas/edit/1
+        public async Task<IActionResult> Edit(int id)
+        {
+            var CinemaDetail = await _service.GetByIdAsync(id);
+            if (CinemaDetail == null) return View("NotFound");
+            return View(CinemaDetail);
+        }
+
+        [HttpPost]
+        //if you dont bind id , 0 row will change and you'll get an error page
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Logo,Name,Description")] Cinema cinema)
+        {
+            //return cinema errors if is not valid
+            if (!ModelState.IsValid) return View(cinema);
+
+            await _service.UpdateAsync(id, cinema);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
