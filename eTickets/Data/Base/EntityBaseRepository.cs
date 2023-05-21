@@ -1,7 +1,10 @@
 ﻿using eTickets.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace eTickets.Data.Base
@@ -35,6 +38,13 @@ namespace eTickets.Data.Base
         public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _context.Set<T>().ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] expression)
+        {
+            IQueryable<T> query = _context.Set<T>();
+            query = expression.Aggregate(query, (current,includeProperty) => current.Include(includeProperty));
+            return await query.ToListAsync();
         }
 
         public async Task<T> GetByIdAsync(int id)
