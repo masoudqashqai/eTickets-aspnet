@@ -15,9 +15,11 @@ namespace eTickets.Models
         [Display(Description = "نام فیلم")]
         [Required(ErrorMessage ="ورود نام اجباری است")]
         public string Name { get; set; }
-
+        [Required(ErrorMessage = "ورود توضیح  اجباری است")]
         public string Description { get; set; }
+        [Required(ErrorMessage = "ورود قیمت اجباری است")]
         public double Price { get; set; }
+        [Required(ErrorMessage = "ورود آدرس عکس اجباری است")]
         public string ImageURL { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
