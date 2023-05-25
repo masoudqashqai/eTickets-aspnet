@@ -44,7 +44,7 @@ namespace eTickets.Data.Services
             }
             await _context.SaveChangesAsync();
         }
-
+        //
         public async Task<Movie> GetMovieByIdAsync(int id)
         {
             var movieDetails = await _context.Movies.
