@@ -25,6 +25,7 @@ namespace eTickets.Models
         public DateTime EndDate { get; set; }
         public MovieCategory MovieCategory { get; set; }
 
+        [Required(ErrorMessage = "ورود بازیگران اجباری است")]
         public List<int> ActorIds { get; set; }
 
         public int CinemaId { get; set; }

@@ -87,7 +87,7 @@ namespace eTickets.Controllers
             ViewBag.Actors = new SelectList(movieDropdownsData.actors, "Id", "FullName");
             ViewBag.Producers = new SelectList(movieDropdownsData.producers, "Id", "FullName");
 
-            return View();
+            return View(response);
         }
 
         [HttpPost]
