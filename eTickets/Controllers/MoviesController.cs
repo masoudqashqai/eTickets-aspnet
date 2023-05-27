@@ -24,6 +24,33 @@ namespace eTickets.Controllers
             return View(AllMovies);
         }
 
+        /*public async Task<IActionResult> Filter(string searchString)
+        {
+            var AllMovies = await _service.GetAllAsync(n => n.Cinema);
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var filteredResult = AllMovies.Where(n => n.Name.Contains(searchString) || n.Description.Contains(searchString)).ToList();
+                
+                return View("Index", filteredResult);
+            }
+
+            return View(AllMovies);
+        }*/
+
+        public async Task<IActionResult> Filter(string searchString)
+        {
+            var allMovies = await _service.GetAllAsync(n => n.Cinema);
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var filteredResult = allMovies.Where(a => a.Name.Contains(searchString) || a.Description.Contains(searchString)).ToList();
+                return View("Index", filteredResult);
+            }
+
+            return View("Index", allMovies);
+        }
+
         //GET: /movies/details/1
         public async Task<IActionResult> Details(int id)
         {
