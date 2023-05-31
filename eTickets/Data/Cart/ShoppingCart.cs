@@ -22,7 +22,7 @@ namespace eTickets.Data.Cart
             return ShoppingCartItems ?? (ShoppingCartItems = _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).
                 Include(n => n.Movie).ToList());
         }
-
+        //
         public double GetShoppingCartTotal()
         {
             var total = _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId).Select(n => n.Movie.Price * n.Amount).Sum();
